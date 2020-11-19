@@ -9,9 +9,11 @@ const TaskListContextProvider = (props) => {
 
   const [editItem, setEditItem] = useState(null);
 
+  const [completeTask, setCompleteTask] = useState(false);
+
   // Functions
   const addTask = (title) => {
-    setTasks([...tasks, { title, id: uuid() }]);
+    setTasks([...tasks, { title, completed: false, id: uuid() }]);
     console.log(tasks);
   };
 
@@ -21,6 +23,20 @@ const TaskListContextProvider = (props) => {
 
   const clearList = () => {
     setTasks([]);
+  };
+
+  const completeToggler = (id) => {
+    setTasks(
+      tasks.map((task) => {
+        if (task.id === id) {
+          return {
+            ...task,
+            completed: !task.completed,
+          };
+        }
+        return task;
+      })
+    );
   };
 
   const findItem = (id) => {
@@ -46,6 +62,7 @@ const TaskListContextProvider = (props) => {
         findItem,
         editTask,
         editItem,
+        completeToggler,
       }}>
       {props.children}
     </TaskListContext.Provider>

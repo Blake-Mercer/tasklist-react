@@ -123,6 +123,12 @@
   color: #999;
 }
 
+.completed {
+  opacity: 70%;
+  text-decoration: line-through;
+  background-color: rgb(182, 40, 111);
+}
+
 .task-btn {
   cursor: pointer;
   background-color: transparent;
@@ -131,6 +137,11 @@
 }
 
 .btn-delete i {
+  font-size: 16px;
+  color: #bbb;
+  margin-right: 20px;
+}
+.btn-complete i {
   font-size: 16px;
   color: #bbb;
   margin-right: 20px;
